@@ -1,6 +1,6 @@
 # px to rem
 
-This extension allows you to convert from px to rem, and vice versa.
+This is an extension for Visual Studio Code that allows you to convert from px to rem, and vice versa.
 
 ## Features
 
