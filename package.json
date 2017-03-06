@@ -1,0 +1,59 @@
+{
+    "name": "px-to-rem",
+    "displayName": "px to rem",
+    "description": "Converts px to rem, and vice versa",
+    "version": "1.0.0",
+    "publisher": "sainoba",
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "icon": "imgs/pxToRemIcon.png",
+    "activationEvents": [
+        "onCommand:extension.pxToRem",
+        "onCommand:extension.remToPx"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "configuration":{
+            "title": "Px to rem configuration",
+            "properties": {
+                "px-to-rem.px-per-rem": {
+                    "type": "integer",
+                    "default": 16,
+                    "description": "Set default size for 1rem."
+                },
+                "px-to-rem.only-change-first-ocurrence": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Set default size for 1rem."
+                },
+                "px-to-rem.notify-if-no-changes": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show a warning if no conversion could be made."
+                }
+            }
+        },
+        "commands": [
+            {"command": "extension.pxToRem",
+            "title": "Px to rem: Converts px to rem"},
+            {"command": "extension.remToPx",
+            "title": "Rem to px: Convert rem to px"}
+        ]
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0",
+        "mocha": "^2.3.3",
+        "eslint": "^3.6.0",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    }
+}
