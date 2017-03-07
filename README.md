@@ -1,32 +1,36 @@
 # px to rem
 
-This is an extension for Visual Studio Code that allows you to convert from px to rem, and vice versa.
+This is an extension for Visual Studio Code that allows you to convert px to rem, and vice versa.
 
-## Features
+## Usage
 
-This extension allows you to convert from px to rem, and vice versa.
+### Keybindings
+* `Alt+Z` Px to rem, and rem to px. Converts selected text from px to rem, and rem to px.
+
+### Commands
+* Px to rem, and rem to px. Converts selected text from px to rem, and rem to px.
+* Px to rem. Converts selected text from px to rem
+* Rem to px. Converts selected text from rem to px
 
 ## Extension Settings
 
 This extension contributes the following settings:
 
-* `px-to-rem.px-per-rem`: number of pixels per rem. Default is `16px`
-* `px-to-rem.only-change-first-ocurrence`: set to change all or only the first ocurrence of px/rem
+* `px-to-rem.px-per-rem`: number of pixels per rem. Default is `16px`.
+* `px-to-rem.only-change-first-ocurrence`: set to change all or only the first selected ocurrence of px/rem
 * `px-to-rem.notify-if-no-changes`: enable/disable notification that alerts the users if no conversion could be made
 
-## Commands
-* Px to rem. Converts px to rem
-* Rem to px. Converts rem to px
-
 ## Known Issues
-
 None yet.
 
 ## Release Notes
 
+### 1.1.0
+* Keybinding added
+* Improved Readme, and fixed some typos
+* New command that allows you to covert rem and px back and forward
 
 ### 1.0.0
-
 Initial release
 
 -----------------------------------------------------------------------------------------------------------
