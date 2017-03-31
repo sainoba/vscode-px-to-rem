@@ -2,7 +2,7 @@
     "name": "px-to-rem",
     "displayName": "px to rem",
     "description": "Converts px to rem, and vice versa",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "publisher": "sainoba",
     "engines": {
         "vscode": "^1.5.0"
@@ -39,6 +39,11 @@
                     "type": "boolean",
                     "default": true,
                     "description": "Show a warning if no conversion could be made."
+                },
+                "px-to-rem.number-of-decimals-digits": {
+                    "type": "integer",
+                    "default": 4,
+                    "description": "Maximum number of decimals digits a px or rem can have."
                 }
             }
         },

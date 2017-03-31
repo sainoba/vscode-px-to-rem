@@ -17,6 +17,7 @@ This is an extension for Visual Studio Code that allows you to convert px to rem
 This extension contributes the following settings:
 
 * `px-to-rem.px-per-rem`: number of pixels per rem. Default is `16px`.
+* `px-to-rem.number-of-decimals-digits`: maximum number of decimals digits a px or rem can have
 * `px-to-rem.only-change-first-ocurrence`: set to change all or only the first selected ocurrence of px/rem
 * `px-to-rem.notify-if-no-changes`: enable/disable notification that alerts the users if no conversion could be made
 
@@ -24,6 +25,9 @@ This extension contributes the following settings:
 None yet.
 
 ## Release Notes
+
+### 1.2.0
+* Introduced an option to set the maximum number of decimals digits a rem and px can have
 
 ### 1.1.0
 * Keybinding added

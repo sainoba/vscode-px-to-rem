@@ -42,10 +42,18 @@ function deactivate() {
 
 function px2Rem(px, pxPerRem) {
     if(pxPerRem == 0 ) {return 0;}
-    return px / pxPerRem;
+    const config = vscode.workspace.getConfiguration("px-to-rem");
+    var  maxDecimals = config.get('number-of-decimals-digits');
+    maxDecimals = Math.max(1, maxDecimals);
+    const value = parseFloat((px / pxPerRem).toFixed(maxDecimals));
+    return value;
 }
 function rem2Px(rem, pxPerRem) {
-    return rem * pxPerRem;
+    const config = vscode.workspace.getConfiguration("px-to-rem");
+    var  maxDecimals = config.get('number-of-decimals-digits');
+    maxDecimals = Math.max(1, maxDecimals);
+    const value = parseFloat((rem * pxPerRem).toFixed(maxDecimals));
+    return value;
 }
 
 function placeholder(regexString, replaceFunction, textEditor, textEditorEdit) {
@@ -74,7 +82,7 @@ function placeholder(regexString, replaceFunction, textEditor, textEditorEdit) {
             // Counts the number of thimes the regex appears in the line
             const matches = text.match(regexExpG);
             numOcurrences += matches ? matches.length : 0;
-            if (numOcurrences == 0) { return; } // No ocurrences, so it's worth continuing 
+            if (numOcurrences == 0) { return; } // No ocurrences, so it's worth continuing
             const regex = onlyChangeFirst ? regexExp : regexExpG;
             //
             const newText = text.replace(regex, replaceFunction);
