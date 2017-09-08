@@ -27,7 +27,7 @@ None yet.
 ## Release Notes
 
 ### 1.2.0
-* Fixed bug. The program was not finding all the px and rems in the selections
+* Fixed bug, The program was not finding all the px and rems in the selections
 * 
 ### 1.2.0
 * Introduced an option to set the maximum number of decimals digits a rem and px can have
@@ -44,5 +44,6 @@ Initial release
 ## Contributing
 
 Feel free to fork this repository and use it the way you like. If you want to propose a nice new feature, just create a pull request from you forked branch.
+[My github](https://github.com/sainoba/vscode-px-to-rem)
 
 **Enjoy!**
