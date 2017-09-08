@@ -27,6 +27,9 @@ None yet.
 ## Release Notes
 
 ### 1.2.0
+* Fixed bug. The program was not finding all the px and rems in the selections
+* 
+### 1.2.0
 * Introduced an option to set the maximum number of decimals digits a rem and px can have
 
 ### 1.1.0

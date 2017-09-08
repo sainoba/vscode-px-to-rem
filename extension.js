@@ -82,7 +82,7 @@ function placeholder(regexString, replaceFunction, textEditor, textEditorEdit) {
             // Counts the number of thimes the regex appears in the line
             const matches = text.match(regexExpG);
             numOcurrences += matches ? matches.length : 0;
-            if (numOcurrences == 0) { return; } // No ocurrences, so it's worth continuing
+            if (numOcurrences == 0) { continue; } // No ocurrences, so it's worth continuing
             const regex = onlyChangeFirst ? regexExp : regexExpG;
             //
             const newText = text.replace(regex, replaceFunction);
