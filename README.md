@@ -26,6 +26,9 @@ None yet.
 
 ## Release Notes
 
+### 1.2.4
+* There's no need to select a value to modify it. Now you only have to have the curso next to the value.
+
 ### 1.2.2 & 1.2.3
 * Modified readme
 
