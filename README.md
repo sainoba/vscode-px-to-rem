@@ -22,9 +22,14 @@ This extension contributes the following settings:
 * `px-to-rem.notify-if-no-changes`: enable/disable notification that alerts the users if no conversion could be made
 
 ## Known Issues
-None yet.
+
+* If you select a value with multiple cursors it will get converted, but following cursors may change place after the conversion.
+* '_Edits from command extension.pxToremAndRemToPx were not applied_' message appears in debug console.
 
 ## Release Notes
+
+### 1.2.5
+* Fixed bug where text was being selected after conversion.
 
 ### 1.2.4
 * There's no need to select a value to modify it. Now you only have to have the curso next to the value.

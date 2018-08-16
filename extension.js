@@ -59,59 +59,77 @@ function rem2Px(rem, pxPerRem) {
 function placeholder(regexString, replaceFunction, textEditor, textEditorEdit) {
     let regexExp = new RegExp(regexString, "i");
     let regexExpG = new RegExp(regexString, "ig");
-    // Check if there is some text selected
+    // clones selections 
     const selections = textEditor.selections;
+    // Check if there is some text selected
     if (selections.length == 0 || selections.reduce((acc, val) => acc || val.isEmpty), false) { return; }
     // Get configuration options
     const config = vscode.workspace.getConfiguration("px-to-rem");
     const onlyChangeFirst = config.get('only-change-first-ocurrence');
     const warningIfNoChanges = config.get('notify-if-no-changes');
-
-    // Declaration of auxiliar variables
-    let numOcurrences = 0;
-    selections.forEach(function (selection) {
-        // Iterates over each selected line
-        for (var index = selection.start.line; index <= selection.end.line; index++) {
-            let start = 0, end = textEditor.document.lineAt(index).range.end.character;
-            // Gets the first and last selected characters for the line
-            if(index === selection.start.line) {
-                let tmpSelection = selection.with({end:selection.start});
-                let range = findValueRangeToConvert(tmpSelection, regexString, textEditor);
-                if(range) {
-                    start = range.start.character;
-                } else {
-                    start = selection.start.character;
+    const changesMade = new Map();
+    textEditor.edit(builder => {
+        // Declaration of auxiliar variables
+        let numOcurrences = 0;
+        selections.forEach((selection) => {
+            // Iterates over each selected line
+            for (var index = selection.start.line; index <= selection.end.line; index++) {
+                let start = 0, end = textEditor.document.lineAt(index).range.end.character;
+                // Gets the first and last selected characters for the line
+                if (index === selection.start.line) {
+                    let tmpSelection = selection.with({ end: selection.start });
+                    let range = findValueRangeToConvert(tmpSelection, regexString, textEditor);
+                    if (range) {
+                        start = range.start.character;
+                    } else {
+                        start = selection.start.character;
+                    }
+                }
+                if (index === selection.end.line) {
+                    let tmpSelection = selection.with({ start: selection.end });
+                    let range = findValueRangeToConvert(tmpSelection, regexString, textEditor);
+                    if (range) {
+                        end = range.end.character;
+                    } else {
+                        end = selection.end.character;
+                    }
+                }
+                // Gets the text of the line
+                let text = textEditor.document.lineAt(index).text.slice(start, end);
+                // Counts the number of times the regex appears in the line
+                const matches = text.match(regexExpG);
+                numOcurrences += matches ? matches.length : 0;
+                if (numOcurrences == 0) { continue; } // No ocurrences, so it's worth continuing
+                const regex = onlyChangeFirst ? regexExp : regexExpG;
+                //
+                const newText = text.replace(regex, replaceFunction);
+                // Replace text in the text file
+                const selectionTmp = new vscode.Selection(index, start, index, end);
+                const key = `${index}-${start}-${end}`;
+                if (!changesMade.has(key)) {
+                    changesMade.set(key, true);
+                    builder.replace(selectionTmp, newText);
                 }
             }
-            if(index === selection.end.line) {
-                let tmpSelection = selection.with({start:selection.end});
-                let range = findValueRangeToConvert(tmpSelection, regexString, textEditor);
-                if(range) {
-                    end = range.end.character;
-                } else {
-                    end = selection.end.character;
-                }
-
-            }
-            // Gets the text of the line
-            let text = textEditor.document.lineAt(index).text.slice(start, end);
-            // Counts the number of times the regex appears in the line
-            const matches = text.match(regexExpG);
-            numOcurrences += matches ? matches.length : 0;
-            if (numOcurrences == 0) { continue; } // No ocurrences, so it's worth continuing
-            const regex = onlyChangeFirst ? regexExp : regexExpG;
-            //
-            const newText = text.replace(regex, replaceFunction);
-            // Replace text in the text file
-            const selectionTmp = new vscode.Selection(index, start, index, end);
-            textEditorEdit.replace(selectionTmp, newText);
-
+            return;
+        }, this);
+        if (warningIfNoChanges && (numOcurrences == 0)) {
+            vscode.window.showWarningMessage("There were no values to transform");
         }
-        return;
-    }, this);
-    if (warningIfNoChanges && (numOcurrences == 0)) {
-        vscode.window.showWarningMessage("There were no values to transform");
-    }
+    })
+        .then(success => {
+            textEditor.selections.forEach((selection, index, newSelections) => {
+                if (selections[index].start.isEqual(selections[index].end)) {
+                    const newPosition = selection.end;
+                    const newSelection = new vscode.Selection(newPosition, newPosition);
+                    textEditor.selections[index] = newSelection;
+                }
+            });
+            textEditor.selections = textEditor.selections;
+            if (!success) {
+                console.log(`Error: ${success}`);
+            }
+        });
 };
 
 function findValueRangeToConvert(selection, regexString, textEditor) {
@@ -119,12 +137,12 @@ function findValueRangeToConvert(selection, regexString, textEditor) {
     const startChar = selection.start.character;
     const text = textEditor.document.lineAt(line).text;
     const regexExpG = new RegExp(regexString, "ig");
-    
+
     var result, indices = [];
-    while ( (result = regexExpG.exec(text)) ) {
+    while ((result = regexExpG.exec(text))) {
         const resultStart = result.index;
         const resultEnd = result.index + result[0].length;
-        if(startChar >= resultStart && startChar <= resultEnd) {
+        if (startChar >= resultStart && startChar <= resultEnd) {
             return new vscode.Range(line, resultStart, line, resultEnd);
         }
     }
