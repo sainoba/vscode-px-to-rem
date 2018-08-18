@@ -7,6 +7,7 @@ This is an extension for Visual Studio Code that allows you to convert px to rem
 ### Keybindings
 * `Alt+Z` Px to rem, and rem to px. Converts selected text from px to rem, and rem to px.
 
+![](./imgs/alt_z.gif)
 ### Commands
 * Px to rem, and rem to px. Converts selected text from px to rem, and rem to px.
 * Px to rem. Converts selected text from px to rem
