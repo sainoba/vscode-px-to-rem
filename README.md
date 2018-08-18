@@ -29,6 +29,9 @@ This extension contributes the following settings:
 
 ## Release Notes
 
+### 1.2.6
+* Added gif for `alt + z` keybinding
+
 ### 1.2.5
 * Fixed bug where text was being selected after conversion.
 
