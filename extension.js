@@ -44,14 +44,14 @@ function px2Rem(px, pxPerRem) {
     if (pxPerRem == 0) { return 0; }
     const config = vscode.workspace.getConfiguration("px-to-rem");
     var maxDecimals = config.get('number-of-decimals-digits');
-    maxDecimals = Math.max(1, maxDecimals);
+    maxDecimals = Math.max(0, maxDecimals);
     const value = parseFloat((px / pxPerRem).toFixed(maxDecimals));
     return value;
 }
 function rem2Px(rem, pxPerRem) {
     const config = vscode.workspace.getConfiguration("px-to-rem");
     var maxDecimals = config.get('number-of-decimals-digits');
-    maxDecimals = Math.max(1, maxDecimals);
+    maxDecimals = Math.max(0, maxDecimals);
     const value = parseFloat((rem * pxPerRem).toFixed(maxDecimals));
     return value;
 }
