@@ -28,6 +28,8 @@ This extension contributes the following settings:
 * '_Edits from command extension.pxToremAndRemToPx were not applied_' message appears in debug console.
 
 ## Release Notes
+### 1.2.7
+* Fixed bug, minimum number of decimal was 1, not 0
 
 ### 1.2.6
 * Added gif for `alt + z` keybinding
