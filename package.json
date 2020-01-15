@@ -11,7 +11,8 @@
         "Formatters",
         "Snippets",
         "Other"
-    ],"keywords": [
+    ],
+    "keywords": [
         "px",
         "rem",
         "px to rem"
@@ -20,15 +21,16 @@
     "activationEvents": [
         "onCommand:extension.pxToRem",
         "onCommand:extension.remToPx",
-        "onCommand:extension.pxToremAndRemToPx"
+        "onCommand:extension.pxToremAndRemToPx",
+        "onCommand:extension.pxPerRem"
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/sainoba/vscode-px-to-rem"
+        "url": "https://github.com/kentakang/vscode-px-to-rem"
     },
     "main": "./extension",
     "contributes": {
-        "configuration":{
+        "configuration": {
             "title": "Px to rem configuration",
             "properties": {
                 "px-to-rem.px-per-rem": {
@@ -54,15 +56,32 @@
             }
         },
         "commands": [
-            {"command": "extension.pxToRem",
-            "title": "Px to rem: Converts px to rem"},
-            {"command": "extension.remToPx",
-            "title": "Rem to px: Convert rem to px"},
-            {"command": "extension.pxToremAndRemToPx",
-            "title": "Px to rem, and rem to px. Converts selected text from px to rem, and rem to px."}
+            {
+                "command": "extension.pxToRem",
+                "title": "Px to rem: Converts px to rem"
+            },
+            {
+                "command": "extension.remToPx",
+                "title": "Rem to px: Convert rem to px"
+            },
+            {
+                "command": "extension.pxToremAndRemToPx",
+                "title": "Px to rem, and rem to px. Converts selected text from px to rem, and rem to px."
+            },
+            {
+                "command": "extension.pxPerRem",
+                "title": "Change px per rem"
+            }
         ],
         "keybindings": [
-            {"command": "extension.pxToremAndRemToPx","key": "Alt+z"}
+            {
+                "command": "extension.pxToremAndRemToPx",
+                "key": "Alt+z"
+            },
+            {
+                "command": "extension.pxPerRem",
+                "key": "Alt+s"
+            }
         ]
     },
     "scripts": {

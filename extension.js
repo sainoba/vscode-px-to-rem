@@ -33,6 +33,17 @@ function activate(context) {
         placeholder(regexStr, (match, value, unit) => unit == "px" ? `${px2Rem(value, pxPerRem)}rem` : `${rem2Px(value, pxPerRem)}px`, textEditor, textEditorEdit);
     });
     context.subscriptions.push(disposable);
+
+    disposable = vscode.commands.registerCommand('extension.pxPerRem', () => {
+        const config = vscode.workspace.getConfiguration("px-to-rem");
+
+        vscode.window.showInputBox('Number of pixels per 1rem').then((rem) => {
+            config.update('px-per-rem', parseInt(rem));
+            vscode.window.showInformationMessage(`Px per rem has updated to ${rem}px`);
+        });
+    });
+    context.subscriptions.push(disposable);
+    
 }
 exports.activate = activate;
 
