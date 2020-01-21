@@ -26,7 +26,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/kentakang/vscode-px-to-rem"
+        "url": "https://github.com/sainoba/vscode-px-to-rem"
     },
     "main": "./extension",
     "contributes": {
