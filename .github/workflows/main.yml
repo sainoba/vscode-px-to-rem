@@ -1,7 +1,6 @@
 on: push
 name: 'Release Vscode Plugin'
 
-
 env:
   NODE_VERSION: '10.x'                # set this to the node version to use
 
@@ -15,7 +14,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - name: npm install, build, and test
+      - name: npm install
         run: |
           # Build and test the project, then
           # deploy to Azure Web App.
@@ -26,3 +25,4 @@ jobs:
           PUBLISHER_TOKEN: ${{ secrets.VSCE_TOKEN }}
         with:
           args: publish -p $PUBLISHER_TOKEN
+
