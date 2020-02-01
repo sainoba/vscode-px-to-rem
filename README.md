@@ -1,6 +1,3 @@
-[![Build Status](https://travis-ci.org/sainoba/vscode-px-to-rem.svg?branch=master)](https://travis-ci.org/sainoba/vscode-px-to-rem)
-![Release Vscode Plugin](https://github.com/sainoba/vscode-px-to-rem/workflows/Release%20Vscode%20Plugin/badge.svg)
-
 # px to rem
 
 This is an extension for Visual Studio Code that allows you to convert px to rem, and vice versa.
