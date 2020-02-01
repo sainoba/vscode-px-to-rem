@@ -5,10 +5,8 @@ jobs:
     name: npm install
     runs-on: ubuntu-latest
     steps:
-      - name: npm install
-        uses: actions/npm@master
-        with:
-          args: install --unsafe-perm
+      - name: NPM or Yarn install with caching
+        uses: bahmutov/npm-install@v1.1.0
       - name: Vscode release plugin
         uses: JCofman/vscodeaction@master
         env:
