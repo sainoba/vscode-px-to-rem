@@ -53,10 +53,10 @@ install:
 # https://github.com/travis-ci/travis-ci/issues/8813
 - rm -f ./node_modules/.bin/which
 
-# script:
+script:
 # - gulp tslint
 # - gulp genAikey
-# - vsce package
+- vsce package
 # - npm test --silent
 
 deploy:
