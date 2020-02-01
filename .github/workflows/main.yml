@@ -1,12 +1,25 @@
 on: push
 name: 'Release Vscode Plugin'
+
+
+env:
+  NODE_VERSION: '10.x'                # set this to the node version to use
+
 jobs:
   npmInstall:
     name: npm install
     runs-on: ubuntu-latest
     steps:
-      - name: NPM or Yarn install with caching
-        uses: bahmutov/npm-install@v1.1.0
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: npm install, build, and test
+        run: |
+          # Build and test the project, then
+          # deploy to Azure Web App.
+          npm install
       - name: Vscode release plugin
         uses: JCofman/vscodeaction@master
         env:
