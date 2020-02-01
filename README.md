@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/sainoba/vscode-px-to-rem.svg?branch=master)](https://travis-ci.org/sainoba/vscode-px-to-rem)
+![Release Vscode Plugin](https://github.com/sainoba/vscode-px-to-rem/workflows/Release%20Vscode%20Plugin/badge.svg)
 
 # px to rem
 
