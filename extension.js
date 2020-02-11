@@ -87,7 +87,7 @@ function activate(context) {
       }
       config.update("px-per-rem", newPxPerRem);
       vscode.window.showInformationMessage(
-        `Px per rem has updated to ${newPxPerRem}px`
+        `Px per rem was updated to ${newPxPerRem}px`
       );
     }
   );
