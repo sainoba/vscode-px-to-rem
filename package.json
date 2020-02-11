@@ -21,7 +21,8 @@
     "activationEvents": [
         "onCommand:extension.pxToRem",
         "onCommand:extension.remToPx",
-        "onCommand:extension.pxToremAndRemToPx"
+        "onCommand:extension.pxToremAndRemToPx",
+        "onCommand:extension.pxPerRem"
     ],
     "repository": {
         "type": "git",
@@ -66,12 +67,20 @@
             {
                 "command": "extension.pxToremAndRemToPx",
                 "title": "Px to rem, and rem to px. Converts selected text from px to rem, and rem to px."
+            },
+            {
+                "command": "extension.pxPerRem",
+                "title": "Change px per rem"
             }
         ],
         "keybindings": [
             {
                 "command": "extension.pxToremAndRemToPx",
                 "key": "Alt+z"
+            },
+            {
+                "command": "extension.pxPerRem",
+                "key": "Alt+s"
             }
         ]
     },
