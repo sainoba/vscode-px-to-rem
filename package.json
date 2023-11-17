@@ -31,7 +31,7 @@
     "main": "./extension",
     "contributes": {
         "configuration": {
-            "title": "Px to rem configuration",
+            "title": "Px to Rem",
             "properties": {
                 "px-to-rem.px-per-rem": {
                     "type": "integer",
